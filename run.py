@@ -23,7 +23,6 @@ for airport in airports:
 
 if alert:
     msg = EmailMessage()
-    print('\r\n'.join(['Alert triggered for metars : ', *alert]))
     msg.set_content('\r\n'.join(['Alert triggered for metars : ', *alert]))
 
     msg['Subject'] = 'METAR Alert!'
