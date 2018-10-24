@@ -13,12 +13,20 @@ def get_metar_with_negative_temp(airport):
     if (temp < 0 or dwpt < 0):
         return metar['Raw-Report']
 
-airport = 'ESSA'
-if get_metar_with_negative_temp(airport):
-    msg = EmailMessage()
-    msg.set_content(''.join(['Check ATIS for : ', airport]))
+airports = ['LPPT', 'LPPR', 'LPFR', 'LPMA']
+alert = []
 
-    msg['Subject'] = 'Record ATIS!'
+for airport in airports:
+    metar = get_metar_with_negative_temp(airport)
+    if metar:
+        alert.append(metar)
+
+if alert:
+    msg = EmailMessage()
+    print('\r\n'.join(['Alert triggered for metars : ', *alert]))
+    msg.set_content('\r\n'.join(['Alert triggered for metars : ', *alert]))
+
+    msg['Subject'] = 'METAR Alert!'
     msg['From'] = 'monkey@prodrigues.tk'
     msg['To'] = 'prodrigues1990@gmail.com'
 
