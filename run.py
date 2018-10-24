@@ -26,7 +26,7 @@ if alert:
     msg.set_content('\r\n'.join(['Alert triggered for metars : ', *alert]))
 
     msg['Subject'] = 'METAR Alert!'
-    msg['From'] = 'monkey@prodrigues.tk'
+    msg['From'] = 'monkey@server.home'
     msg['To'] = 'prodrigues1990@gmail.com'
 
     s = smtplib.SMTP('localhost')
