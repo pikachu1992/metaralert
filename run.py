@@ -27,7 +27,7 @@ if alert:
 
     msg['Subject'] = 'METAR Alert!'
     msg['From'] = 'monkey@server.home'
-    msg['To'] = 'prodrigues1990@gmail.com'
+    msg['To'] = 'tmavicente@gmail.com'
 
     s = smtplib.SMTP('localhost')
     s.send_message(msg)
