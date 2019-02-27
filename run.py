@@ -7,11 +7,26 @@ def get_metar_with_negative_temp(airport):
     resp = requests.get('/'.join(['https://avwx.rest/api/metar', airport]))
     metar = resp.json()
 
-    temp = int(metar['Temperature'].replace('M', '-'))
-    dwpt = int(metar['Dewpoint'].replace('M', '-'))
-    windspeed = int(metar['Wind-Speed'])
-    if(metar['Wind-Gust'] != ''): 
-        windgust = int(metar['Wind-Gust'])
+    if 'Temperature' in metar:
+        temp = int(metar['Temperature'].replace('M', '-'))
+    else:
+        temp = 1
+
+    if 'Dewpoint' in metar:
+        dwpt = int(metar['Dewpoint'].replace('M', '-'))
+    else:
+        dwpt = 1
+
+    if 'Wind-Speed' in metar:
+        windspeed = int(metar['Wind-Speed'])
+    else:
+        windspeed = 0
+
+    if 'Wind-Gust' in metar:
+        if metar['Wind-Gust'] != '':
+            windgust = int(metar['Wind-Gust'])
+        else:
+            windgust = 0
     else:
         windgust = 0
 
