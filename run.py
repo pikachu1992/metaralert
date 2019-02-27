@@ -18,7 +18,7 @@ def get_metar_with_negative_temp(airport):
     if (temp <= 0 or dwpt <= 0 or windspeed >= 30 or windgust >= 30):
         return metar['Raw-Report']
 
-airports = ['LPPT', 'LPPR', 'LPFR', 'LPMA']
+airports = ['LPPT', 'LPPR', 'LPFR', 'LPMA', 'LPCS']
 alert = []
 
 for airport in airports:
